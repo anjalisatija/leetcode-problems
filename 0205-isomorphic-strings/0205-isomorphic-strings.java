@@ -1,0 +1,30 @@
+import java.util.HashMap;
+
+public class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        HashMap<Character, Character> hasm = new HashMap<>();
+        if(s.length()!=t.length()){
+            return false;
+        }
+        
+        for (int i = 0; i < t.length(); i++) {
+          Character original = s.charAt(i);
+          Character replacement = t.charAt(i);
+          if(!hasm.containsKey(original)){
+            if(!hasm.containsValue(replacement)){
+                hasm.put(original,replacement);
+            }else{
+                return false;
+            }
+          }else{
+            Character mappedreplacement = hasm.get(original);
+            if(mappedreplacement != replacement){
+                return false;
+            } 
+          }  
+        }
+        return true;
+   
+       
+    }
+}
